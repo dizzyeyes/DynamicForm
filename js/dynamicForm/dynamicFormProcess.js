@@ -12,7 +12,7 @@ dynamicForm.prototype.fillActioin = function (){
     titleButton.onmousedown = this.DragTitle;
     titleButton.onmouseup = this.unDragTitle;
     titleButton.onmouseover = this.focusTitle;
-    titleButton.onmouseout = this.unDragTitle;
+    titleButton.onmouseout = this.unfocusTitle;
  }
 dynamicForm.prototype.process = function()
 {
@@ -32,6 +32,11 @@ dynamicForm.prototype.DragTitle = function(event)
 dynamicForm.prototype.focusTitle = function(event)
 {
     this.style.cursor="move";
+    console.log('进入: ');
+}
+dynamicForm.prototype.unfocusTitle = function(event)
+{
+    this.style.cursor="default";
     console.log('进入: ');
 }
 dynamicForm.prototype.unDragTitle = function()
