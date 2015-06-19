@@ -53,7 +53,7 @@ dynamicForm.prototype.process = function()
 {
     var outputobj=this.parent.div.getElementsByTagName('input');
     var outputobjtextarea=this.parent.div.getElementsByTagName('textarea');
-    var output = new Array();
+    var data = new Array();
     for(var item=0;item<outputobj.length;item++)
     {
         var inputItem = outputobj.item(item);
@@ -73,7 +73,7 @@ dynamicForm.prototype.process = function()
         arr.id =  inputItem.id;
         arr.name =  inputItem.name;
         arr.value =  inputItem.value;
-        output.push(arr);
+        data.push(arr);
     }
     for(var item=0;item<outputobjtextarea.length;item++)
     {
@@ -94,8 +94,11 @@ dynamicForm.prototype.process = function()
         arr.id =  inputItem.id;
         arr.name =  inputItem.name;
         arr.value =  inputItem.value;
-        output.push(arr);
+        data.push(arr);
     }
+    var output = {};
+    output.title = this.parent.title;
+    output.data = data;
     console.log('处理: ',output);
 }
 dynamicForm.prototype.cancel = function()
