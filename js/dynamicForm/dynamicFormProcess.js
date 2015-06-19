@@ -27,21 +27,21 @@ dynamicForm.prototype.DragTitle = function(event)
 {
     this.style.cursor="move";
     this.parent.fadeTool.clickOnDiv(this.parent.div,event);
-    console.log('点击: ');
+    // console.log('点击: ');
 }
 dynamicForm.prototype.focusTitle = function(event)
 {
     this.style.cursor="move";
-    console.log('进入: ');
+    // console.log('移动: ');
 }
 dynamicForm.prototype.unfocusTitle = function(event)
 {
     this.style.cursor="default";
-    console.log('进入: ');
+    // console.log('进入: ');
 }
 dynamicForm.prototype.unDragTitle = function()
 {
     this.parent.fadeTool.onUpDiv();
     this.style.cursor="default";
-    console.log('释放: ');
+    // console.log('释放: ');
 }

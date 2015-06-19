@@ -10,13 +10,19 @@ function dynamicForm(viewer,title,id){
     this.title=title;
     
     document.dynamicform = this;
+    window.dynamicform = this;
    
     document.addEventListener( 'mousemove', this.onMouseMove, false );
+    window.addEventListener( 'resize', this.onWindowResize, false );
 } 
 
 dynamicForm.prototype.onMouseMove = function(event)
 {
     this.dynamicform.fadeTool.onMoveDiv(event);
+}
+dynamicForm.prototype.onWindowResize = function(event)
+{
+    this.dynamicform.fadeTool.MoveFloatLayer(this.dynamicform.div.id);
 }
 
 dynamicForm.prototype.initForm = function(id){
