@@ -53,7 +53,7 @@ dynamicForm.prototype.process = function()
 {
     var outputobj=this.parent.div.getElementsByTagName('input');
     var outputobjtextarea=this.parent.div.getElementsByTagName('textarea');
-    var data = new Array();
+    var data = {};
     for(var item=0;item<outputobj.length;item++)
     {
         var inputItem = outputobj.item(item);
@@ -67,13 +67,7 @@ dynamicForm.prototype.process = function()
             inputItem.onfocus = this.parent.prettyStyle;
             return;
         }
-        var inputLabel = inputItem.labels[0];
-        var arr = {};
-        arr.title = inputLabel.innerHTML;
-        arr.id =  inputItem.id;
-        arr.name =  inputItem.name;
-        arr.value =  inputItem.value;
-        data.push(arr);
+        data[inputItem.name] = inputItem.value;
     }
     for(var item=0;item<outputobjtextarea.length;item++)
     {
@@ -88,13 +82,7 @@ dynamicForm.prototype.process = function()
             inputItem.onfocus = this.parent.prettyStyle;
             return;
         }
-        var inputLabel = inputItem.labels[0];
-        var arr = {};
-        arr.title = inputLabel.innerHTML;
-        arr.id =  inputItem.id;
-        arr.name =  inputItem.name;
-        arr.value =  inputItem.value;
-        data.push(arr);
+        data[inputItem.name] = inputItem.value;
     }
     var output = {};
     output.title = this.parent.title;
