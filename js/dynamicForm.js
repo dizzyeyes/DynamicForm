@@ -48,10 +48,6 @@ dynamicForm.prototype.hide = function()
     this.clearForm();
     this.visible=false;
 }
-dynamicForm.prototype.selectobj = function(obj)
-{          
-    this.obj=obj;
-}
 dynamicForm.prototype.show = function(x,y){
     if(this.enabled==false) return;
     this.clearForm();
@@ -76,6 +72,32 @@ dynamicForm.prototype.clearDiv = function (div){
         div.removeChild(chld[item]);
     }
  }
+ 
+dynamicForm.prototype.isInForm = function(x,y)
+{
+    return this.isInDiv(this.div,x,y);
+}
+dynamicForm.prototype.isInDiv = function(div,x,y)
+{
+    var divx1,divx2,divy1,divy2;
+    if(div!=null)
+    {
+        divx1 = div.offsetLeft;  
+        divy1 = div.offsetTop;  
+        divx2 = div.offsetLeft + div.offsetWidth;  
+        divy2 = div.offsetTop + div.offsetHeight;  
+                        
+        if( x > divx1 && x < divx2 && y > divy1 && y < divy2)
+        {                     
+            // console.log("Mouse: ",x,", ",y," Rect: ",divx1,divy1,divx2,divy2);
+            return true;
+        }
+        else
+            return false;        
+    }
+    return false;
+} 
+ 
 dynamicForm.prototype.getJsonDataofForm = function()
 {
     var dataJson="[]";
@@ -103,6 +125,14 @@ dynamicForm.prototype.getJsonDataofFormNew = function()
                         name: 'form_input_Name',
                         title: '名称&nbsp;&nbsp;&nbsp;&nbsp;',
                         holder: '请输入名称...',
+                        divName: 'input',
+                        type: 'text',
+                        className: 'span4'
+                    });
+    formFirstlist.push({
+                        name: 'form_input_Model',
+                        title: '模型文件&nbsp;&nbsp;&nbsp;&nbsp;',
+                        holder: '请输入模型文件名称...',
                         divName: 'input',
                         type: 'text',
                         className: 'span4'
