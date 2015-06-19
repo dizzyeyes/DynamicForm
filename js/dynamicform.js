@@ -1,4 +1,4 @@
-function dynamicForm(title,viewer,id){
+function dynamicForm(viewer,title,id){
     var scope = this;
     if(id==undefined) id="form-new";
     this.viewer=viewer;
@@ -6,6 +6,7 @@ function dynamicForm(title,viewer,id){
     this.visible=false;   
     this.fadeTool= new fadeInOutTool();
     this.enabled = true;
+    if(title==undefined) title='untitled';
     this.title=title;
     
     document.dynamicform = this;
