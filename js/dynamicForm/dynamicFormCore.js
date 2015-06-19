@@ -28,7 +28,7 @@
 					$.each(item.children || [], function(i, c) {
                         if(c.divName==='button')
                             html.push(
-                                '<'+c.divName+ ' data-name=' +c.name+ ' id=' +c.name+' class='+c.className +' type="button">',                                
+                                '<'+c.divName+ ' name=' +c.name+ ' id=' +c.id+' class='+c.className +' type="button">',                                
                                 '<span>' + c.title + '</span>',
                                 '</'+c.divName+'>'
                             );
@@ -38,7 +38,7 @@
                             $.each(c.children || [], function(i, cc) {
                                 html.push(
                                     (i === 0 ? '' : '&nbsp;&nbsp;&nbsp;&nbsp;'),
-                                    '<'+cc.divName+ ' data-name=' +cc.name+ ' id=' +cc.name+' class='+cc.className +' type="button">',                                
+                                    '<'+cc.divName+ ' name=' +cc.name+ ' id=' +cc.id+' class='+cc.className +' type="button">',                                
                                     '<span>' + cc.title + '</span>',
                                     '</'+cc.divName+'>'
                                 );
@@ -47,8 +47,8 @@
                         }
                         else
                             html.push(
-                                '<label>'+c.title+'</label>',
-                                '<'+c.divName+ ' data-name=' +c.name+ ' id=' +c.name+' class='+c.className +(' type='+c.type||0)+' placeholder='+c.holder+'>',
+                                '<label for="'+c.id+'">'+c.title+'</label>',
+                                '<'+c.divName+ ' name=' +c.name+ ' id=' +c.id+' class='+c.className +(' type='+c.type||0)+' placeholder='+c.holder+'>',
                                 '</'+c.divName+'>'
                             );
 					});
@@ -60,18 +60,8 @@
 			this.$el.append(html.join(''));
 			this.$el.css('width', this.options.width + 'px');
 			
-            this.events();
-		},
-		
-		events: function() {
-			this.$el.find('a[data-name]').click($.proxy(this, 'select'));
-		},
-		
-		select: function(event) {
-			var $this = $(event.target);
-			
-			this.options.onSelect($this.data('name'));
 		}
+		
 	};
 
 	$.fn.bootstrapForm = function() {

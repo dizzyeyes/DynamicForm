@@ -120,32 +120,36 @@ dynamicForm.prototype.getJsonDataofFormNew = function()
 {
     var formFirstlist=new Array();
     formFirstlist.push({
-                        name: 'form_input_ID',
-                        title: 'ID&nbsp;&nbsp;&nbsp;&nbsp;',
+                        id: 'form_input_ID',
+                        name: 'id',
+                        title: 'ID',
                         holder: '请输入ID...',
                         divName: 'input',
                         type: 'text',
                         className: 'span4'
                     });
     formFirstlist.push({
-                        name: 'form_input_Name',
-                        title: '名称&nbsp;&nbsp;&nbsp;&nbsp;',
+                        id: 'form_input_Name',
+                        name: 'name',
+                        title: '名称',
                         holder: '请输入名称...',
                         divName: 'input',
                         type: 'text',
                         className: 'span4'
                     });
     formFirstlist.push({
-                        name: 'form_input_Model',
-                        title: '模型文件&nbsp;&nbsp;&nbsp;&nbsp;',
+                        id: 'form_input_Model',
+                        name: 'model',
+                        title: '模型文件',
                         holder: '请输入模型文件名称...',
                         divName: 'input',
                         type: 'text',
                         className: 'span4'
                     });
     formFirstlist.push({
-                        name: 'form_input_Info',
-                        title: '信息&nbsp;&nbsp;&nbsp;&nbsp;',
+                        id: 'form_input_Info',
+                        name: 'info',
+                        title: '信息',
                         holder: '请输入信息...',
                         divName: 'textarea',
                         type: 'textarea',
@@ -153,23 +157,27 @@ dynamicForm.prototype.getJsonDataofFormNew = function()
                     });
     var buttonlist=new Array();
     buttonlist.push({
+                    id: 'form_button_ok',
                     name: 'form_button_ok',
                     title: '确定',
                     divName: 'button',
                     className: '"btn btn-info"'
                 });
     buttonlist.push({
+                    id: 'form_button_cancel',
                     name: 'form_button_cancel',
                     title: '取消',
                     divName: 'button',
                     className: '"btn btn-warning"'
                 });
     formFirstlist.push({
+                    id: 'form_buttons',
                     name: 'form_buttons',
                     divName: 'buttons',
                     children: buttonlist,
                 });
    var dataJson= [{
+                    id: 'menu_edit',
                     name: 'menu_edit',
                     title: this.title,
                     divName: 'div',

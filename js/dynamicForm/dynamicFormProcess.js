@@ -14,15 +14,6 @@ dynamicForm.prototype.fillActioin = function (){
     titleButton.onmouseover = this.focusTitle;
     titleButton.onmouseout = this.unfocusTitle;
  }
-dynamicForm.prototype.process = function()
-{
-    console.log('处理: ');
-}
-dynamicForm.prototype.cancel = function()
-{
-    this.parent.hide();
-    console.log('取消: ');
-}
 dynamicForm.prototype.DragTitle = function(event)
 {
     this.style.cursor="move";
@@ -44,4 +35,38 @@ dynamicForm.prototype.unDragTitle = function()
     this.parent.fadeTool.onUpDiv();
     this.style.cursor="default";
     // console.log('释放: ');
+}
+dynamicForm.prototype.process = function()
+{
+    var outputobj=this.parent.div.getElementsByTagName('input');
+    var outputobjtextarea=this.parent.div.getElementsByTagName('textarea');
+    var output = new Array();
+    for(var item=0;item<outputobj.length;item++)
+    {
+        var inputItem = outputobj.item(item);
+        var inputLabel = inputItem.labels[0];
+        var arr = {};
+        arr.title = inputLabel.innerHTML;
+        arr.id =  inputItem.id;
+        arr.name =  inputItem.name;
+        arr.value =  inputItem.value;
+        output.push(arr);
+    }
+    for(var item=0;item<outputobjtextarea.length;item++)
+    {
+        var inputItem = outputobjtextarea.item(item); 
+        var inputLabel = inputItem.labels[0];
+        var arr = {};
+        arr.title = inputLabel.innerHTML;
+        arr.id =  inputItem.id;
+        arr.name =  inputItem.name;
+        arr.value =  inputItem.value;
+        output.push(arr);
+    }
+    console.log('处理: ',output);
+}
+dynamicForm.prototype.cancel = function()
+{
+    this.parent.hide();
+    console.log('取消: ');
 }
