@@ -36,6 +36,19 @@ dynamicForm.prototype.unDragTitle = function()
     this.style.cursor="default";
     // console.log('释放: ');
 }
+dynamicForm.prototype.defaultStyle = function(event)
+{
+    if(event.type=='blur')
+        this.isFocused=false;
+    if(this.isFocused==true) return;
+    this.style.border = "#ccc 1px solid";
+}
+dynamicForm.prototype.prettyStyle = function(event)
+{
+    if(event.type=='focus')
+        this.isFocused=true;
+    this.style.border = "#56b4ef 1px solid";
+}
 dynamicForm.prototype.process = function()
 {
     var outputobj=this.parent.div.getElementsByTagName('input');
@@ -44,6 +57,16 @@ dynamicForm.prototype.process = function()
     for(var item=0;item<outputobj.length;item++)
     {
         var inputItem = outputobj.item(item);
+        if(inputItem.value=="")
+        {
+            inputItem.style.border = "2px solid #ed2d11";
+            inputItem.placeholder = "不能为空";
+            inputItem.onblur = this.parent.defaultStyle;
+            inputItem.onmouseout = this.parent.defaultStyle;
+            inputItem.onmouseover = this.parent.prettyStyle;
+            inputItem.onfocus = this.parent.prettyStyle;
+            return;
+        }
         var inputLabel = inputItem.labels[0];
         var arr = {};
         arr.title = inputLabel.innerHTML;
@@ -55,6 +78,16 @@ dynamicForm.prototype.process = function()
     for(var item=0;item<outputobjtextarea.length;item++)
     {
         var inputItem = outputobjtextarea.item(item); 
+        if(inputItem.value=="")
+        {
+            inputItem.style.border = "1px solid #ed2d11";
+            inputItem.placeholder = "不能为空";
+            inputItem.onblur = this.parent.defaultStyle;
+            inputItem.onmouseout = this.parent.defaultStyle;
+            inputItem.onmouseover = this.parent.prettyStyle;
+            inputItem.onfocus = this.parent.prettyStyle;
+            return;
+        }
         var inputLabel = inputItem.labels[0];
         var arr = {};
         arr.title = inputLabel.innerHTML;
